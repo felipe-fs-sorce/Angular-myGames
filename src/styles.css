@@ -1,9 +1,9 @@
         /* CSS reset */
-
+        
         * {
             box-sizing: border-box;
         }
-
+        
         html,
         body {
             width: 100%;
@@ -12,104 +12,114 @@
             font-family: 'Comic Neue', cursive;
             font-size: 16px;
         }
-
+        
         body {
-            background-image: url('assets/bg01.png');
+            background-image: url('assets/medal.png');
             background-attachment: fixed;
             background-position: bottom center;
             background-repeat: no-repeat;
             background-size: cover;
             background-color: black;
-            color: rgb(0, 255, 0);
+            color: rgb(235, 199, 158);
+            /* color: rgb(0, 255, 0); */
         }
-
+        
         a {
-            color: rgb(0, 255, 0);
+            /* color: rgb(0, 255, 0); */
+            color: rgb(235, 199, 158);
             text-decoration: none;
-            border-bottom: 1px dotted rgb(0, 255, 0);
+            /* border-bottom: 1px dotted rgb(0, 255, 0); */
+            border-bottom: 1px dotted rgb(235, 199, 158);
             display: inline-block;
         }
-
+        
         a:hover {
             color: orangered;
             border-bottom: 1px dotted orangered;
         }
         /* Sticky footer */
-
+        
         html,
         body,
         app-root {
             position: relative;
             height: 100%;
         }
-
+        
         app-root {
             min-height: 100%;
             display: flex;
             flex-direction: column;
         }
         /* Botões genéricos */
-
+        
         .basic-button {
             display: inline-block;
             padding: .5rem 1rem;
             color: rgb(0, 32, 0);
-            background: repeating-linear-gradient(rgb(110, 238, 110), rgb(0, 117, 0));
+            /* background: repeating-linear-gradient(rgb(110, 238, 110), rgb(0, 117, 0)); */
+            background: repeating-linear-gradient(rgb(181, 165, 66), rgb(184, 115, 51));
             border-radius: .3rem;
             border: none;
         }
-
+        
         .basic-button:hover {
-            color: rgb(0, 255, 0);
-            background: linear-gradient(rgb(0, 156, 0), rgb(0, 35, 0));
+            /* color: rgb(0, 255, 0); */
+            color: rgb(235, 199, 158);
+            /* background: linear-gradient(rgb(0, 156, 0), rgb(0, 35, 0)); */
+            background: linear-gradient (rgb(233, 190, 141), rgb(0, 35, 0));
         }
         /* Bordas das caixas */
-
+        
         .hborder {
-            border-left: 2px solid rgb(16, 255, 16);
-            border-right: 2px solid rgb(16, 255, 16);
+            /*border-left: 2px solid rgb(16, 255, 16);
+            border-right: 2px solid rgb(16, 255, 16); */
+            border-left: 2px solid rgb(190, 190, 190);
+            border-right: 2px solid rgb(190, 190, 190);
         }
-
+        
         .vborder {
-            border-top: 2px solid rgb(16, 255, 16);
-            border-bottom: 2px solid rgb(16, 255, 16);
+            /*border-top: 2px solid rgb(16, 255, 16);
+            border-bottom: 2px solid rgb(16, 255, 16); */
+            border-left: 2px solid rgb(190, 190, 190);
+            border-right: 2px solid rgb(190, 190, 190);
         }
-
+        
         .hborder,
         .vborder {
             position: relative;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, .7);
         }
-
+        
         .hbd {
             position: absolute;
             width: .4rem;
             height: 2px;
-            background: rgb(16, 255, 16);
+            background: rgb(190, 190, 190);
         }
-
+        
         .vbd {
             position: absolute;
             height: 5rem;
             width: 2px;
-            background: rgb(16, 255, 16);
+            background: rgb(190, 190, 190);
         }
-
+        
         .tl {
             top: 0;
             left: 0;
         }
-
+        
         .tr {
             top: 0;
             right: 0;
         }
-
+        
         .br {
             bottom: 0;
             right: 0;
         }
-
+        
         .bl {
             bottom: 0;
             left: 0;
