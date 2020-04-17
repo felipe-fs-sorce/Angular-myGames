@@ -79,7 +79,9 @@ pageTitle = 'My Games';
 
 
       $(document).on('click', '#links > a', () => {
-        $('#links').slideUp('fast');
+        if (window.innerWidth < 512) { // Se a largura é menor que 512 px
+        $('#links').slideUp('fast');  // Oculta o menu principal
+        }
       });
 
     });

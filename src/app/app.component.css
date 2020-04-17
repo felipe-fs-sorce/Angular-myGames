@@ -2,7 +2,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-shadow: -1px -1px #040, -1px 1px, #040, 1px -1px, #040, 1px 1px #040;
+    text-shadow: -1px -1px #CFB53B, -1px 1px, #CFB53B, 1px -1px, #CFB53B, 1px 1px #CFB53B;
 }
 
 header h1 {
@@ -57,7 +57,7 @@ main {
 
 footer {
     text-align: center;
-    padding: 6rem;
+    padding: 1rem;
     font-style: italic;
     font-size: .8rem;
 }
@@ -68,7 +68,7 @@ footer,
 #links {
     color: rgb(235, 199, 158);
     /* background: rgba(0, 70, 0, .5);*/
-    background: rgba(140, 120, 83, .9);
+    background: rgba(140, 120, 83, .5);
     margin: .8rem;
 }
 

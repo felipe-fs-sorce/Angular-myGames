@@ -1,9 +1,10 @@
         /* CSS reset */
-        
+
         * {
             box-sizing: border-box;
+            outline: none;
         }
-        
+
         html,
         body {
             width: 100%;
@@ -12,7 +13,7 @@
             font-family: 'Comic Neue', cursive;
             font-size: 16px;
         }
-        
+
         body {
             background-image: url('assets/medal.png');
             background-attachment: fixed;
@@ -20,10 +21,10 @@
             background-repeat: no-repeat;
             background-size: cover;
             background-color: black;
-            color: rgb(235, 199, 158);
+            color: rgb(240, 156, 61);
             /* color: rgb(0, 255, 0); */
         }
-        
+
         a {
             /* color: rgb(0, 255, 0); */
             color: rgb(235, 199, 158);
@@ -32,27 +33,38 @@
             border-bottom: 1px dotted rgb(235, 199, 158);
             display: inline-block;
         }
-        
+
         a:hover {
             color: orangered;
             border-bottom: 1px dotted orangered;
         }
+        /* Centraliza e limita o crescimento da tela. */
+
+        app-root {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 960%;
+            margin: auto;
+        }
         /* Sticky footer */
-        
+
         html,
         body,
         app-root {
             position: relative;
             height: 100%;
         }
-        
-        app-root {
-            min-height: 100%;
-            display: flex;
-            flex-direction: column;
+        /* Responsivos */
+
+        @media (min-height: 100%) {
+            body {
+                background-position: center;
+            }
         }
         /* Botões genéricos */
-        
+
         .basic-button {
             display: inline-block;
             padding: .5rem 1rem;
@@ -62,64 +74,74 @@
             border-radius: .3rem;
             border: none;
         }
-        
+
         .basic-button:hover {
             /* color: rgb(0, 255, 0); */
             color: rgb(235, 199, 158);
             /* background: linear-gradient(rgb(0, 156, 0), rgb(0, 35, 0)); */
             background: linear-gradient (rgb(233, 190, 141), rgb(0, 35, 0));
+            border: none;
+        }
+        /* Classes de uso geral */
+
+        .center {
+            text-align: center;
+        }
+
+        .small {
+            font-size: small;
         }
         /* Bordas das caixas */
-        
+
         .hborder {
             /*border-left: 2px solid rgb(16, 255, 16);
             border-right: 2px solid rgb(16, 255, 16); */
             border-left: 2px solid rgb(190, 190, 190);
             border-right: 2px solid rgb(190, 190, 190);
         }
-        
+
         .vborder {
             /*border-top: 2px solid rgb(16, 255, 16);
             border-bottom: 2px solid rgb(16, 255, 16); */
             border-left: 2px solid rgb(190, 190, 190);
             border-right: 2px solid rgb(190, 190, 190);
         }
-        
+
         .hborder,
         .vborder {
             position: relative;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, .7);
         }
-        
+
         .hbd {
             position: absolute;
             width: .4rem;
             height: 2px;
             background: rgb(190, 190, 190);
         }
-        
+
         .vbd {
             position: absolute;
             height: 5rem;
             width: 2px;
             background: rgb(190, 190, 190);
         }
-        
+
         .tl {
             top: 0;
             left: 0;
         }
-        
+
         .tr {
             top: 0;
             right: 0;
         }
-        
+
         .br {
             bottom: 0;
             right: 0;
         }
-        
+
         .bl {
             bottom: 0;
             left: 0;
