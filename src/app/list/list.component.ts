@@ -98,4 +98,26 @@ export class ListComponent implements OnInit {
 
   }
 
+  // Apagar o jogo
+  deleteGame(gamekey, gameTitle) {
+
+    // Mensagem para confimar se deseja apagar (Observe o ! = Not)
+    if(!confirm(`Ooops!\nTem certeza que deseja apagar esse jogo "${gameTitle}" testa coleção?`)) {
+      return false;
+    }
+
+    this.db.collection('games').doc(gamekey).delete()
+    .then (res => {
+      alert(`"${gameTitle}" foi apagado da sua coleção!\nClique em [ok] para continuar.`);
+    })
+    .catch(err => {
+      console.error(`Falha ao apagar: $[err]`);
+    });
+
+
+
+
+    return false;
+  }
+
 }
