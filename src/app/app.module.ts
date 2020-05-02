@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +14,10 @@ import { E404Component } from './e404/e404.component';
 import { AboutComponent } from './about/about.component';
 import { FormComponent } from './form/form.component';
 
+
+// Importar componentes de formulario
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +31,18 @@ import { FormComponent } from './form/form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+
+    // Inicialização do Firebase
     AngularFireModule.initializeApp(environment.firebase),
+
+    // Carga da classe de acesso ao Firestore
     AngularFirestoreModule,
+
+    // Carga de FormsModule
     FormsModule
+
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
