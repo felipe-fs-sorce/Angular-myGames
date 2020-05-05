@@ -5,6 +5,7 @@ import { ListComponent } from './list/list.component';
 import { NewComponent } from './new/new.component';
 import { E404Component } from './e404/e404.component';
 import { AboutComponent } from './about/about.component';
+import { EditComponent } from './edit/edit.component';
 
 
 const routes: Routes = [
@@ -19,9 +20,12 @@ const routes: Routes = [
   { path: 'new', component: NewComponent, data: { title: 'Novo Jogo'} },
   { path: 'about', component: AboutComponent, data: { title: 'Sobre o my Games' } },
 
+  //Rota para editar documento
+  { path: 'edit/:id', component: EditComponent, data: { title: 'Edite o Jogo'} },
+
   //Rota desconhecida é redirecionada para o componete "error404"
 
-  { path: '**', component: E404Component, data: { title: 'Página não encontrada' } }
+  { path: '**', component: E404Component, data: { title: 'Error de cadastro' } }
 ];
 
 @NgModule({

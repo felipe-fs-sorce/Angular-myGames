@@ -5,6 +5,7 @@ import * as $ from 'jquery';
 
 // Importar a classe dos formulario
 import { GameForm } from '../classes/game-form';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -17,17 +18,75 @@ export class FormComponent implements OnInit {
   gameForm: GameForm = new GameForm();
 
   // Armazena os nomes das plataformas
-  platforms: Observable<any[]>;
+  platforms: Observable<any[]> = this.db.collection('platforms', (ref) => ref.orderBy('name')).valueChanges();
 
-  constructor(private db: AngularFirestore) {
+  // Obter rota
+  id: string = this.route.snapshot.paramMap.get('id');
 
-    this.platforms = this.db.collection('platforms', (ref) => ref.orderBy('name')).valueChanges();
+  constructor(
 
-  }
+    //Conexão com Firestore
+    private db: AngularFirestore,
+
+
+    //Roteamentos
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
 
-    $(document).ready(() => { // JQuery
+    // se tem id obter dados do daos db
+    if (this.id !== null) {
+
+      // Atualizar campo dos formularios
+      this.gameForm.id = this.id;
+
+      this.db.collection<any>('games').doc(this.id).ref.get().then(
+
+        (doc) => {
+
+          if (doc.exists) {
+
+            // Atribui dados recebidos aos campos do formularios
+            this.gameForm.id = doc.id;
+            this.gameForm.title = doc.data().title;
+            this.gameForm.cover = doc.data().cover;
+            this.gameForm.description = doc.data().description;
+            this.gameForm.platform = doc.data().platform;
+            this.gameForm.media = doc.data().media;
+            this.gameForm.date = doc.data().date;
+
+
+          } else {
+            // AVISO
+            alert('Documento não existe!\nClique em [Ok] para continuar');
+
+            // Redireciona para a listagem
+            this.router.navigate(['/list']);
+          }
+
+        }
+
+      ).catch(
+        // Mensagem de erro do console
+        (error) => {
+          console.error('Falha ao obter documento: ' , error);
+        }
+
+
+      );
+
+
+    }
+
+
+
+
+
+
+    // Responsividade da ajuda (aside)
+    $(document).ready(() => {
       $(window).resize(() => {
         if (window.innerWidth > 539) {
           $('aside').show(0);
@@ -59,17 +118,56 @@ export class FormComponent implements OnInit {
         return false;
 
       })
+
+      // Em caso de erro ao gravar....
       .catch((err) => {
+
         // Exibe erros no console
         console.error('Erro na gravação de dados: ' + err);
 
       });
 
-
+      // Se tem um id, está editando documento existente
 
     } else {
 
-      // edita o novo jogo indicado pelo Id
+      // console.log('Editando', this.gameForm);
+
+      this.db.collection<any>('games').doc(this.id).set(
+
+        // Obtém os dados do formulario e atribui ao documento do Firestore
+
+        {
+          title: this.gameForm.title,
+          cover: this.gameForm.cover,
+          description: this.gameForm.description,
+          platform: this.gameForm.platform,
+          media: this.gameForm.media,
+          date: this.gameForm.date,
+        }
+
+
+
+      ).then( () => {
+      // se atualizou o documento
+      alert(`"${this.gameForm.title}" atualizado com sucesso!\n\nClique em [Ok] para continuar.`);
+
+      // Listagem de jogos
+
+      this.router.navigate(['/list']);
+
+
+
+      }
+
+      ).catch(
+
+        // Exibe error no console
+        (error) => {
+          console.error('Falha ao atualizar Db:', error);
+        });
+
+
 
     }
   }
